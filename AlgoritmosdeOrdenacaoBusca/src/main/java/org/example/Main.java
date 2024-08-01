@@ -4,12 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-//The array must be sorted to use Binary Search;
-//We will start at the middle position in the array, and we will
-//check if the number we are searching for is greater or less than
-//half of the array
-//The complexity of the BS is O(1) in the best case, which is when the target_number is in the middle of the array
-//And in the Average Case is O(logn)
+
         int[] array  = new int[8];
         for(int i = 0; i < array.length; i++){
             array [i] = i*2;
