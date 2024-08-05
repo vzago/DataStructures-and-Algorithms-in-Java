@@ -11,14 +11,14 @@ public class Main {
         lista.adicionar("DF");
 
         for(int i = 0; i < lista.getTamanho(); i++){
-            System.out.println(lista.getposicao(i).getValor());
+            System.out.println(lista.getPosicao(i).getValor());
         }
 
         //remover estado CE
         lista.remover("AC");
         System.out.println("REMOVENDO");
         for(int i = 0; i < lista.getTamanho(); i++){
-            System.out.println(lista.getposicao(i).getValor());
+            System.out.println(lista.getPosicao(i).getValor());
         }
 
         LinkedList<Clientes> cliente = new LinkedList<Clientes>();
@@ -27,7 +27,7 @@ public class Main {
         cliente.adicionar(new Clientes("Davi","789"));
 
         for(int i = 0; i < cliente.getTamanho(); i++){
-            System.out.println(cliente.getposicao(i).getValor());
+            System.out.println(cliente.getPosicao(i).getValor());
         }
 
 

@@ -1,6 +1,6 @@
 package org.example;
 
-public class LinkedList <TYPE>{
+public class LinkedList<TYPE> {
     private Node<TYPE> first;
     private Node<TYPE> last;
     private int tamanho;
@@ -9,8 +9,8 @@ public class LinkedList <TYPE>{
         this.tamanho = 0;
     }
 
-    public void adicionar (TYPE novoValor){
-        Node<TYPE> novoNode = new Node<TYPE> (novoValor);
+    public void adicionar(TYPE novoValor){
+        Node<TYPE> novoNode = new Node<TYPE>(novoValor);
         if(this.first == null && this.last == null){
             this.first = novoNode;
             this.last = novoNode;
@@ -25,23 +25,20 @@ public class LinkedList <TYPE>{
         Node<TYPE> current = this.first;
         Node<TYPE> previous = null;
 
-        if(this.tamanho == 1){
-            this.first = null;
-            this.last = null;
-        }
-
-        for(int i = 0; i < this.getTamanho(); i++){
+        while(current != null){
             if(current.getValor().equals(valorProcurado)){
                 if(current == this.first){
                     this.first = current.getProximo();
-                    current.setProximo(null);
-                }else if(current == this.last){
+                    if(this.first == null){
+                        this.last = null;
+                    }
+                } else if(current == this.last){
                     this.last = previous;
-                    previous.setProximo(null);
-                }else{
+                    if(this.last != null){
+                        this.last.setProximo(null);
+                    }
+                } else {
                     previous.setProximo(current.getProximo());
-                    current = null;
-
                 }
                 this.tamanho--;
                 break;
@@ -51,38 +48,38 @@ public class LinkedList <TYPE>{
         }
     }
 
-    public Node getposicao(int posicao){
-        Node current = this.first;
+    public Node<TYPE> getPosicao(int posicao){
+        Node<TYPE> current = this.first;
         for(int i = 0; i < posicao; i++){
-            if(current.getProximo()!= null){
+            if(current.getProximo() != null){
                 current = current.getProximo();
             }
         }
         return current;
     }
 
-    public Node<TYPE> getFirst() {
-        return first;
+    public void adicionarComeco(TYPE novoValor){
+        Node<TYPE> novoElemento = new Node<TYPE>(novoValor);
+        if(this.first == null && this.last == null){
+            this.first = novoElemento;
+            this.last = novoElemento;
+        }else{
+            novoElemento.setProximo(this.first);
+            this.first = novoElemento;
+        }
+        this.tamanho++;
     }
 
-    public void setFirst(Node<TYPE> first) {
-        this.first = first;
+    public Node<TYPE> getFirst() {
+        return first;
     }
 
     public int getTamanho() {
         return tamanho;
     }
 
-    public void setTamanho(int tamanho) {
-        this.tamanho = tamanho;
-    }
-
     public Node<TYPE> getLast() {
         return last;
-    }
-
-    public void setLast(Node<TYPE> last) {
-        this.last = last;
     }
 
     public IteratorLinkedList<TYPE> getIterator(){
